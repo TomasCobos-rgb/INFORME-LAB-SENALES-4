@@ -64,4 +64,4 @@ plt.show()
 
 ### RESULTADOS OBTENIDOS
 
-![RFSULTADOS OBTENIDOS]()
+![RFSULTADOS OBTENIDOS](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/imagen_2025-11-01_192653468.png?raw=true)
