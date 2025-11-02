@@ -63,3 +63,5 @@ plt.show()
 ```
 
 ### RESULTADOS OBTENIDOS
+
+![RFSULTADOS OBTENIDOS]()
