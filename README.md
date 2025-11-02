@@ -65,3 +65,9 @@ plt.show()
 ### RESULTADOS OBTENIDOS
 
 ![RFSULTADOS OBTENIDOS](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/imagen_2025-11-01_192653468.png?raw=true)
+
+### PARTE B
+En esta fase se realizó la adquisición de la señal electromiográfica (EMG) proveniente de un voluntario sano, colocando los electrodos sobre un grupo muscular específico (como el bíceps o antebrazo). Durante el registro, el sujeto efectuó contracciones repetidas hasta la aparición de la fatiga muscular, permitiendo analizar cómo varían las componentes frecuenciales de la señal en condiciones reales
+
+### PARTE C
+En esta etapa se realizó el análisis espectral de la señal EMG mediante la aplicación de la Transformada Rápida de Fourier (FFT) a cada una de las contracciones registradas. Este procedimiento permite observar la distribución de las componentes frecuenciales de la señal y cómo estas varían a lo largo del tiempo. A partir del espectro de amplitud, se compararon las primeras contracciones con las últimas, identificando la disminución del contenido de alta frecuencia y el desplazamiento del pico espectral como indicadores del inicio y progresión de la fatiga muscular.
