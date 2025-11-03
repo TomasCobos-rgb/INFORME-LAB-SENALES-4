@@ -82,6 +82,10 @@ axs[0].grid(True)
 <img width="919" height="265" alt="Señal_OG_Real" src="https://github.com/user-attachments/assets/710b52c3-4305-4e67-99ab-fdb564e9d911" />
 ### APLICACIÓN DEL FILTRO
 
+En esta figura se comparan la señal electromiográfica (EMG) original y la señal filtrada mediante un filtro pasa banda entre 20 y 450 Hz. El proceso de filtrado permite eliminar el ruido de baja frecuencia (como artefactos de movimiento o interferencias de línea base) y atenuar componentes de alta frecuencia no relacionadas con la actividad muscular
+
+, conservando las frecuencias características de la señal EMG. Como resultado, la señal filtrada (en azul) muestra una forma más limpia y representativa de la actividad eléctrica muscular, facilitando su análisis en etapas posteriores como la detección de contracciones o el estudio espectral.
+
 ![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(4).png?raw=true)
 
 ```python
