@@ -243,6 +243,8 @@ plt.show()
 
 ### ESPECTRO DE AMPLITUD 
 
+![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(8).png?raw=true)
+
 ```python
 # FFT de la señal filtrada
 N = len(senal_filtrada)             # número de muestras
