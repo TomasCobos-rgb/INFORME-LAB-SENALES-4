@@ -80,6 +80,7 @@ axs[0].grid(True)
 ```
 <img width="919" height="265" alt="Señal_OG_Real" src="https://github.com/user-attachments/assets/710b52c3-4305-4e67-99ab-fdb564e9d911" />
 ### APLICACIÓN DE FILTRO 
+
 ```python
 def butter_bandpass(lowcut, highcut, fs, order=4):
     nyq = 0.5 * fs
@@ -102,6 +103,8 @@ axs[1].set_ylabel('Amplitud [mV]')
 axs[1].legend(loc='upper right')
 axs[1].grid(True)
 ```
+<img width="1042" height="297" alt="Graf_og_vs_filt" src="https://github.com/user-attachments/assets/9a629d82-fd1b-4e99-b139-956ac7fd0e0f" />
+
 <img width="1042" height="297" alt="Graf_og_vs_filt" src="https://github.com/user-attachments/assets/df2104a1-88c1-4957-9e40-38696c88f405" />
 
 ### PARTE C
