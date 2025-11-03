@@ -287,6 +287,8 @@ plt.show()
 
 ### ESPECTRO DE AMPLITUD (WELCH)
 
+El método de Welch es una técnica de estimación espectral que permite analizar cómo se distribuye la energía de una señal en el dominio de la frecuencia, reduciendo el ruido mediante el promedio de segmentos superpuestos. En el gráfico se comparan tres contracciones musculares (Contracción 1, 42 y 83), observándose diferencias en la intensidad y el contenido frecuencial de cada una, lo cual permite identificar variaciones en la actividad espectral asociadas a distintos niveles de esfuerzo o condiciones fisiológicas.
+
 ![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(9).png?raw=true)
 
 ```python
