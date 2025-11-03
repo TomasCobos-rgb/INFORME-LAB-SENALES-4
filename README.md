@@ -214,6 +214,8 @@ En esta etapa se realizó el análisis espectral de la señal EMG mediante la ap
 
 ### FFT
 
+![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(7).png?raw=true)
+
 ```python
 def graficar_fft(segmento, fs, titulo):
     N = len(segmento)
