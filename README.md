@@ -150,7 +150,12 @@ plt.show()
 num_contracciones = 83
 L = len(senal_filtrada)
 segmentos = np.array_split(senal_filtrada, num_contracciones)
+
+
 ```
+<img width="1042" height="437" alt="Señal_div" src="https://github.com/user-attachments/assets/b10ce813-d244-4f6b-9de9-e7a3604190fc" />
+
+
 ### CÁLCULO DE MEDIA Y MEDIANA (GRÁFICA)
 
 ```python
@@ -224,6 +229,9 @@ plt.show()
 
 ```
 
+<img width="891" height="367" alt="FFT_contr" src="https://github.com/user-attachments/assets/080e56a4-166c-4c6a-80c0-a751d031024b" />
+
+
 ### ESPECTRO DE AMPLITUD 
 
 ```python
@@ -268,22 +276,6 @@ for i, seg in enumerate(segmentos):
         Pxx = np.array([0.])
     else:
         f, Pxx = welch(seg, fs=Fs, nperseg=this_nperseg, noverlap=this_nperseg//2)
-    # potencia total
-    P_tot = np.sum(Pxx)
-    if P_tot == 0:
-        P_tot = 1e-20  # evitar división por cero
-    # pico espectral (frecuencia del máximo)
-    idx_max = np.argmax(Pxx)
-    fpico = f[idx_max]
-    pico_espectral.append(fpico)
-    # centroide / frecuencia media
-    centroid = np.sum(f * Pxx) / np.sum(Pxx)
-    freq_centroid.append(centroid)
-    # fracciones de potencia sobre ciertos umbrales
-    frac100 = np.sum(Pxx[f > 100]) / P_tot
-    frac250 = np.sum(Pxx[f > 250]) / P_tot
-    frac_pot_high100.append(frac100)
-    frac_pot_high250.append(frac250)
 
     # guardar espectros seleccionados
     if i in (idx_primera, idx_media, idx_ultima):
@@ -306,7 +298,33 @@ plt.show()
 
 <img width="877" height="412" alt="Espect_Welch_db" src="https://github.com/user-attachments/assets/50c50c4c-ebb7-43da-835c-aca8b4e7f9d8" />
 
+### CÁLCULO DEL PICO ESPECTRAL Y GRÁFICA
 
+```python
+ idx_max = np.argmax(Pxx)
+    fpico = f[idx_max]
+    pico_espectral.append(fpico)
 
+centroid = np.sum(f * Pxx) / np.sum(Pxx)
+    freq_centroid.append(centroid)
 
+plt.figure(figsize=(11,5))
+plt.plot(np.arange(1, num_contracciones+1), pico_espectral, '-o', label='Pico espectral (Hz)')
+plt.plot(np.arange(1, num_contracciones+1), freq_centroid, '-s', label='Centroide (Hz)')
+plt.xlabel('Número de contracción')
+plt.ylabel('Frecuencia [Hz]')
+plt.title('Evolución del pico espectral y centroide a lo largo de las contracciones')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+print(f"- Pico medio (Hz): {np.round(np.mean(pico_espectral),2)} ± {np.round(np.std(pico_espectral),2)}")
+print(f"- Centroide medio (Hz): {np.round(np.mean(freq_centroid),2)} ± {np.round(np.std(freq_centroid),2)}")
+print(f"- Fracción media >100Hz: {np.round(np.mean(frac_pot_high100),3)}")
+print(f"- Fracción media >250Hz: {np.round(np.mean(frac_pot_high250),3)}")
+```
+
+<img width="689" height="345" alt="Pico_espect" src="https://github.com/user-attachments/assets/ac27dbc3-4895-40c2-b595-75c8f6578cb2" />
+
+<img width="208" height="54" alt="Val_Punto_C" src="https://github.com/user-attachments/assets/f994d498-6787-44b8-bd98-61ff27dd1bbd" />
 
