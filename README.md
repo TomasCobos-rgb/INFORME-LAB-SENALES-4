@@ -70,8 +70,39 @@ plt.show()
 En esta fase se realizó la adquisición de la señal electromiográfica (EMG) proveniente de un voluntario sano, colocando los electrodos sobre un grupo muscular específico (como el bíceps o antebrazo). Durante el registro, el sujeto efectuó contracciones repetidas hasta la aparición de la fatiga muscular, permitiendo analizar cómo varían las componentes frecuenciales de la señal en condiciones reales
 
 ### RESULTADOS OBTENIDOS
+```python
+# Señal original completa
+axs[0].plot(t, senal, color='gray', linewidth=0.8)
+axs[0].set_title('Señal EMG Original Completa')
+axs[0].set_xlabel('Tiempo [s]')
+axs[0].set_ylabel('Amplitud [mV]')
+axs[0].grid(True)
+```
 <img width="919" height="265" alt="Señal_OG_Real" src="https://github.com/user-attachments/assets/710b52c3-4305-4e67-99ab-fdb564e9d911" />
+### APLICACIÓN DE FILTRO 
+```python
+def butter_bandpass(lowcut, highcut, fs, order=4):
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
+    return b, a
 
+def aplicar_filtro(senal, lowcut=20, highcut=450, fs=1000, order=4):
+    b, a = butter_bandpass(lowcut, highcut, fs, order)
+    return filtfilt(b, a, senal)
+
+senal_filtrada = aplicar_filtro(senal, 20, 450, Fs)
+# Original vs Filtrada (superpuestas)
+axs[1].plot(t, senal, color='gray', linewidth=0.8, alpha=0.6, label='Original')
+axs[1].plot(t, senal_filtrada, color='blue', linewidth=1.2, label='Filtrada (20–450 Hz)')
+axs[1].set_title('Comparación: Señal EMG Original vs Filtrada')
+axs[1].set_xlabel('Tiempo [s]')
+axs[1].set_ylabel('Amplitud [mV]')
+axs[1].legend(loc='upper right')
+axs[1].grid(True)
+```
+<img width="1042" height="297" alt="Graf_og_vs_filt" src="https://github.com/user-attachments/assets/df2104a1-88c1-4957-9e40-38696c88f405" />
 
 ### PARTE C
 En esta etapa se realizó el análisis espectral de la señal EMG mediante la aplicación de la Transformada Rápida de Fourier (FFT) a cada una de las contracciones registradas. Este procedimiento permite observar la distribución de las componentes frecuenciales de la señal y cómo estas varían a lo largo del tiempo. A partir del espectro de amplitud, se compararon las primeras contracciones con las últimas, identificando la disminución del contenido de alta frecuencia y el desplazamiento del pico espectral como indicadores del inicio y progresión de la fatiga muscular.
