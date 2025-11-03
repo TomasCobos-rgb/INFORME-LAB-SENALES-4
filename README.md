@@ -111,6 +111,9 @@ axs[1].grid(True)
 
 ### ACERCAMIENTO A GRAFICA FILTRADA VS ORIGINAL
 
+![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(5).png?raw=true)
+
+
 ```python
   Gráfica comparativa: señal original y filtrada superpuestas ---
 plt.figure(figsize=(14,6))
