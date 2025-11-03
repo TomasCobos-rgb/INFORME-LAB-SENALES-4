@@ -256,6 +256,8 @@ plt.show()
 
 ### ESPECTRO DE AMPLITUD 
 
+En esta fase se obtuvo el espectro de amplitud de la señal EMG utilizando la Transformada Rápida de Fourier (FFT) y representándolo en una escala logarítmica de frecuencia. Este análisis permite visualizar cómo se distribuye la energía de la señal en diferentes bandas de frecuencia, proporcionando una visión más detallada del contenido espectral.
+
 ![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(8).png?raw=true)
 
 ```python
@@ -358,3 +360,4 @@ print(f"- Fracción media >250Hz: {np.round(np.mean(frac_pot_high250),3)}")
 
 ### CONCLUSIONES 
 - En la FFT de la contracción 1 (inicio) se aprecian picos distribuidos en un rango más amplio de frecuencias, lo que sugiere una mayor variabilidad inicial en la activación de las fibras musculares. En cambio, la FFT de la contracción 83 (final) muestra un pico más definido y concentrado, indicando una posible disminución de la frecuencia media asociada a la aparición de fatiga muscular. Este análisis espectral es fundamental para estudiar la dinámica de la señal EMG y su relación con el rendimiento muscular.
+- En el espectro de amplitud de la señal EMG utilizando la Transformada Rápida de Fourier (FFT), la gráfica se observa una concentración principal de energía entre 20 y 150 Hz, rango típico de la actividad electromiográfica muscular. Los picos más altos corresponden a las frecuencias dominantes generadas durante las contracciones musculares. La escala logarítmica facilita identificar variaciones en componentes de baja y alta frecuencia, lo que resulta esencial para comprender el comportamiento de la señal y detectar posibles cambios en la fatiga o en la activación neuromuscular.
