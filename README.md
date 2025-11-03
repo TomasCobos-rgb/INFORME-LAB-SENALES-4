@@ -163,6 +163,8 @@ segmentos = np.array_split(senal_filtrada, num_contracciones)
 
 ### CÁLCULO DE MEDIA Y MEDIANA (GRÁFICA)
 
+![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(6).png?raw=true)
+
 ```python
 def calcular_frecuencias(segmento, fs):
     f, Pxx = welch(segmento, fs=fs, nperseg=1024)
