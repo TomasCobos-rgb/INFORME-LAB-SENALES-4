@@ -272,6 +272,8 @@ plt.show()
 
 ### ESPECTRO DE AMPLITUD (WELCH)
 
+![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(9).png?raw=true)
+
 ```python
 idx_primera = 0
 idx_media = num_contracciones // 2
