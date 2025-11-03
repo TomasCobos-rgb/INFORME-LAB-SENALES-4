@@ -180,6 +180,16 @@ plt.ylabel('Frecuencia [Hz]')
 plt.legend()
 plt.grid()
 plt.show()
+
+tabla_resultados = pd.DataFrame({
+    'Contracción': np.arange(1, num_contracciones + 1),
+    'Frecuencia Media (Hz)': np.round(frecuencia_media, 2),
+    'Frecuencia Mediana (Hz)': np.round(frecuencia_mediana, 2)
+})
+
+print(tabla_resultados)
+tabla_resultados.to_csv('/content/drive/MyDrive/frecuencias_EMG.csv', index=False)
+print("\nArchivo 'frecuencias_EMG.csv' guardado en tu Drive con los resultados.")
 ```
 
 <img width="390" height="169" alt="Val_med_83" src="https://github.com/user-attachments/assets/6f1b8df5-0469-411e-8947-0016057a826e" />
@@ -189,3 +199,114 @@ plt.show()
 
 ### PARTE C
 En esta etapa se realizó el análisis espectral de la señal EMG mediante la aplicación de la Transformada Rápida de Fourier (FFT) a cada una de las contracciones registradas. Este procedimiento permite observar la distribución de las componentes frecuenciales de la señal y cómo estas varían a lo largo del tiempo. A partir del espectro de amplitud, se compararon las primeras contracciones con las últimas, identificando la disminución del contenido de alta frecuencia y el desplazamiento del pico espectral como indicadores del inicio y progresión de la fatiga muscular.
+
+### FFT
+
+```python
+def graficar_fft(segmento, fs, titulo):
+    N = len(segmento)
+    f = np.fft.rfftfreq(N, 1/fs)
+    fft_mag = np.abs(np.fft.rfft(segmento))
+    plt.plot(f, fft_mag)
+    plt.title(titulo)
+    plt.xlabel('Frecuencia [Hz]')
+    plt.ylabel('Magnitud')
+    plt.grid()
+
+plt.figure(figsize=(12,5))
+plt.subplot(1,2,1)
+graficar_fft(segmentos[0], Fs, 'FFT Contracción 1 (Inicio)')
+plt.subplot(1,2,2)
+graficar_fft(segmentos[-1], Fs, 'FFT Contracción 83 (Final)')
+plt.tight_layout()
+plt.show()
+
+
+```
+
+### ESPECTRO DE AMPLITUD 
+
+```python
+# FFT de la señal filtrada
+N = len(senal_filtrada)             # número de muestras
+fft_vals = np.fft.fft(senal_filtrada)      # transformada compleja
+fft_mag = np.abs(fft_vals) / N             # magnitud normalizada
+fft_mag = fft_mag[:N//2] * 2               # solo mitad positiva, factor 2 por simetría
+freqs = np.fft.fftfreq(N, 1/Fs)[:N//2]     # vector de frecuencias (0 a Fs/2)
+
+
+
+# --- Gráfico con eje de frecuencia logarítmico ---
+plt.figure(figsize=(12,5))
+plt.plot(freqs, fft_mag, color='purple', linewidth=1)
+plt.xscale('log')
+plt.xlim(10, 500)
+plt.title('Espectro de Amplitud (escala logarítmica)')
+plt.xlabel('Frecuencia [Hz]')
+plt.ylabel('Magnitud')
+plt.grid(True, which='both', ls='--', alpha=0.6)
+plt.show()
+
+
+```
+<img width="762" height="356" alt="Espect_ampl" src="https://github.com/user-attachments/assets/ad5ab001-2b2e-4ee0-a6fd-e869153839c5" />
+
+### ESPECTRO DE AMPLITUD (WELCH)
+
+```python
+idx_primera = 0
+idx_media = num_contracciones // 2
+idx_ultima = num_contracciones - 1
+espectros_seleccion = {}
+
+for i, seg in enumerate(segmentos):
+    # Si el segmento es muy corto para nperseg, reducir nperseg
+    this_nperseg = min(nperseg, len(seg))
+    if this_nperseg < 8:
+        # segmento demasiado corto; rellenar con ceros o saltar
+        f = np.array([0.])
+        Pxx = np.array([0.])
+    else:
+        f, Pxx = welch(seg, fs=Fs, nperseg=this_nperseg, noverlap=this_nperseg//2)
+    # potencia total
+    P_tot = np.sum(Pxx)
+    if P_tot == 0:
+        P_tot = 1e-20  # evitar división por cero
+    # pico espectral (frecuencia del máximo)
+    idx_max = np.argmax(Pxx)
+    fpico = f[idx_max]
+    pico_espectral.append(fpico)
+    # centroide / frecuencia media
+    centroid = np.sum(f * Pxx) / np.sum(Pxx)
+    freq_centroid.append(centroid)
+    # fracciones de potencia sobre ciertos umbrales
+    frac100 = np.sum(Pxx[f > 100]) / P_tot
+    frac250 = np.sum(Pxx[f > 250]) / P_tot
+    frac_pot_high100.append(frac100)
+    frac_pot_high250.append(frac250)
+
+    # guardar espectros seleccionados
+    if i in (idx_primera, idx_media, idx_ultima):
+        espectros_seleccion[i] = (f, Pxx)
+
+plt.figure(figsize=(14,6))
+for idx, (f, Pxx) in espectros_seleccion.items():
+    Pxx_db = 10 * np.log10(Pxx + 1e-20)   # en dB
+    plt.plot(f, Pxx_db, label=f'Contracción {idx+1}')
+plt.xscale('log')
+plt.xlim(10, Fs/2)
+plt.xlabel('Frecuencia [Hz] (log)')
+plt.ylabel('PSD [dB]')
+plt.title('Espectros (Welch) - escala log (dB)')
+plt.legend()
+plt.grid(True, which='both', ls='--', alpha=0.5)
+plt.show()
+
+```
+
+<img width="877" height="412" alt="Espect_Welch_db" src="https://github.com/user-attachments/assets/50c50c4c-ebb7-43da-835c-aca8b4e7f9d8" />
+
+
+
+
+
