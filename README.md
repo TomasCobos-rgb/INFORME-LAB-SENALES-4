@@ -115,6 +115,8 @@ axs[1].grid(True)
 
 ### ACERCAMIENTO A GRAFICA FILTRADA VS ORIGINAL
 
+La figura muestra un acercamiento a los primeros tres segundos de la señal EMG, comparando la forma de onda original (en gris) con la señal filtrada mediante un filtro pasa banda de 20 a 450 Hz (en azul). Este enfoque con zoom permite apreciar con mayor detalle cómo el filtrado elimina las variaciones lentas y el ruido de baja frecuencia, resaltando las oscilaciones rápidas que representan la verdadera actividad eléctrica muscular durante las contracciones. Gracias a este filtrado, la señal resultante conserva las componentes fisiológicamente relevantes y facilita el análisis posterior de la dinámica muscular y la frecuencia de contracción.
+
 ![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(5).png?raw=true)
 
 
