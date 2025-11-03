@@ -225,6 +225,8 @@ En esta etapa se realizó el análisis espectral de la señal EMG mediante la ap
 
 ### FFT
 
+En esta etapa se aplicó la Transformada Rápida de Fourier (FFT) a la primera y última contracción muscular, con el fin de analizar la distribución espectral de la señal EMG. Esta herramienta permite observar cómo se concentra la energía en diferentes frecuencias, facilitando la identificación de cambios en la actividad muscular a lo largo del tiempo.
+
 ![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(7).png?raw=true)
 
 ```python
@@ -354,3 +356,5 @@ print(f"- Fracción media >250Hz: {np.round(np.mean(frac_pot_high250),3)}")
 
 <img width="208" height="54" alt="Val_Punto_C" src="https://github.com/user-attachments/assets/f994d498-6787-44b8-bd98-61ff27dd1bbd" />
 
+### CONCLUSIONES 
+- En la FFT de la contracción 1 (inicio) se aprecian picos distribuidos en un rango más amplio de frecuencias, lo que sugiere una mayor variabilidad inicial en la activación de las fibras musculares. En cambio, la FFT de la contracción 83 (final) muestra un pico más definido y concentrado, indicando una posible disminución de la frecuencia media asociada a la aparición de fatiga muscular. Este análisis espectral es fundamental para estudiar la dinámica de la señal EMG y su relación con el rendimiento muscular.
