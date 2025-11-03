@@ -356,6 +356,7 @@ print(f"- Fracción media >250Hz: {np.round(np.mean(frac_pot_high250),3)}")
 
 <img width="689" height="345" alt="Pico_espect" src="https://github.com/user-attachments/assets/ac27dbc3-4895-40c2-b595-75c8f6578cb2" />
 
+
 <img width="208" height="54" alt="Val_Punto_C" src="https://github.com/user-attachments/assets/f994d498-6787-44b8-bd98-61ff27dd1bbd" />
 
 ### CONCLUSIONES 
