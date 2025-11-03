@@ -172,6 +172,8 @@ segmentos = np.array_split(senal_filtrada, num_contracciones)
 
 ### CÁLCULO DE MEDIA Y MEDIANA (GRÁFICA)
 
+En esta fase se calcularon la frecuencia media y la frecuencia mediana de cada una de las 83 contracciones musculares segmentadas. Estos parámetros espectrales permiten evaluar la distribución de energía de la señal EMG en el dominio de la frecuencia. La frecuencia media refleja el promedio ponderado de las componentes frecuenciales, mientras que la frecuencia mediana indica el punto que divide el espectro de potencia en dos partes iguales. En la gráfica se observa la evolución de ambas medidas a lo largo de las contracciones, mostrando variaciones que pueden asociarse a cambios en la activación muscular o a la aparición de fatiga durante el registro.
+
 ![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(6).png?raw=true)
 
 ```python
