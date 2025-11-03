@@ -82,6 +82,7 @@ axs[0].grid(True)
 ### APLICACIÓN DE FILTRO 
 
 ```python
+
 def butter_bandpass(lowcut, highcut, fs, order=4):
     nyq = 0.5 * fs
     low = lowcut / nyq
@@ -103,9 +104,54 @@ axs[1].set_ylabel('Amplitud [mV]')
 axs[1].legend(loc='upper right')
 axs[1].grid(True)
 ```
+
 <img width="1042" height="297" alt="Graf_og_vs_filt" src="https://github.com/user-attachments/assets/9a629d82-fd1b-4e99-b139-956ac7fd0e0f" />
 
-<img width="1042" height="297" alt="Graf_og_vs_filt" src="https://github.com/user-attachments/assets/df2104a1-88c1-4957-9e40-38696c88f405" />
+### ACERCAMIENTO A GRAFICA FILTRADA VS ORIGINAL
+
+```python
+  Gráfica comparativa: señal original y filtrada superpuestas ---
+plt.figure(figsize=(14,6))
+
+# Señal original en gris
+plt.plot(t, senal, color='gray', linewidth=0.8, alpha=0.6, label='Señal original')
+
+# Señal filtrada en azul más destacada
+plt.plot(t, senal_filtrada, color='blue', linewidth=1.2, label='Señal filtrada (20–450 Hz)')
+
+plt.title('Comparación: Señal EMG Original vs Filtrada')
+plt.xlabel('Tiempo [s]')
+plt.ylabel('Amplitud [mV]')
+plt.legend(loc='upper right')
+plt.grid(True)
+plt.show()
+
+#  Gráfico con zoom en una región (por ejemplo, primeros 3 segundos) ---
+inicio_zoom = 0       # segundo inicial
+fin_zoom = 3          # segundo final
+muestras_zoom = slice(int(inicio_zoom * Fs), int(fin_zoom * Fs))
+
+plt.figure(figsize=(14,5))
+plt.plot(t[muestras_zoom], senal[muestras_zoom], color='gray', linewidth=0.8, alpha=0.6, label='Original')
+plt.plot(t[muestras_zoom], senal_filtrada[muestras_zoom], color='blue', linewidth=1.2, label='Filtrada')
+plt.title(f'Zoom de la Señal EMG (entre {inicio_zoom}s y {fin_zoom}s)')
+plt.xlabel('Tiempo [s]')
+plt.ylabel('Amplitud [mV]')
+plt.legend(loc='upper right')
+plt.grid(True)
+plt.show()
+
+```
+
+<img width="1042" height="299" alt="Zoom_og_vs_filt" src="https://github.com/user-attachments/assets/b32fc835-80d3-4924-8203-a5bc8916061b" />
+
+### SEGMENTACIÓN
+```python
+num_contracciones = 83
+L = len(senal_filtrada)
+segmentos = np.array_split(senal_filtrada, num_contracciones)
+```
+
 
 ### PARTE C
 En esta etapa se realizó el análisis espectral de la señal EMG mediante la aplicación de la Transformada Rápida de Fourier (FFT) a cada una de las contracciones registradas. Este procedimiento permite observar la distribución de las componentes frecuenciales de la señal y cómo estas varían a lo largo del tiempo. A partir del espectro de amplitud, se compararon las primeras contracciones con las últimas, identificando la disminución del contenido de alta frecuencia y el desplazamiento del pico espectral como indicadores del inicio y progresión de la fatiga muscular.
