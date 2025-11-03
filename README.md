@@ -330,6 +330,10 @@ plt.show()
 
 ### CÁLCULO DEL PICO ESPECTRAL Y GRÁFICA
 
+En el gráfico se representa la evolución de la frecuencia del pico espectral y del centroide a lo largo de las contracciones, permitiendo analizar cómo varía el contenido frecuencial de la señal en función del esfuerzo muscular.
+
+El pico espectral (Hz) indica la frecuencia donde se concentra la mayor potencia de la señal EMG, mientras que el centroide (Hz) representa la media ponderada del espectro, reflejando la distribución general de energía en frecuencia. Las fluctuaciones observadas en ambos parámetros pueden asociarse con cambios en la fatiga muscular, la intensidad de la contracción o la activación de diferentes unidades motoras durante el registro. Además, los valores medios mostrados (pico medio ≈ 43 Hz y centroide medio ≈ 49 Hz) ofrecen una referencia global del comportamiento espectral a lo largo del experimento.
+
 ![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(10).png?raw=true)
 
 ```python
