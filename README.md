@@ -157,6 +157,9 @@ plt.show()
 <img width="1042" height="299" alt="Zoom_og_vs_filt" src="https://github.com/user-attachments/assets/b32fc835-80d3-4924-8203-a5bc8916061b" />
 
 ### SEGMENTACIÓN
+
+En esta etapa del procesamiento, la señal EMG previamente filtrada fue segmentada en 83 contracciones musculares individuales. Esta segmentación permite analizar de forma separada cada evento de contracción, facilitando la observación de su forma de onda, duración y variaciones en la amplitud. Como se observa en las figura, cada segmento representa una contracción distinta del músculo, mostrando cómo la actividad eléctrica varía a lo largo del tiempo. Este procedimiento es esencial para estudios de fatiga muscular, activación motora y análisis de patrones de esfuerzo.
+
 ```python
 num_contracciones = 83
 L = len(senal_filtrada)
