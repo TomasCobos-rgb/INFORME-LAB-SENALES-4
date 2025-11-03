@@ -151,6 +151,38 @@ num_contracciones = 83
 L = len(senal_filtrada)
 segmentos = np.array_split(senal_filtrada, num_contracciones)
 ```
+### CÁLCULO DE MEDIA Y MEDIANA (GRÁFICA)
+
+```python
+def calcular_frecuencias(segmento, fs):
+    f, Pxx = welch(segmento, fs=fs, nperseg=1024)
+    Pxx = Pxx / np.sum(Pxx)  # Normalizar el espectro de potencia
+    freq_media = np.sum(f * Pxx)
+    cum_Pxx = np.cumsum(Pxx)
+    freq_mediana = f[np.where(cum_Pxx >= 0.5)[0][0]]
+    return freq_media, freq_mediana
+
+frecuencia_media = []
+frecuencia_mediana = []
+
+for seg in segmentos:
+    f_mean, f_median = calcular_frecuencias(seg, Fs)
+    frecuencia_media.append(f_mean)
+    frecuencia_mediana.append(f_median)
+
+# %% --- Graficar la evolución de las frecuencias ---
+plt.figure(figsize=(10,5))
+plt.plot(frecuencia_media, 'o-', label='Frecuencia Media')
+plt.plot(frecuencia_mediana, 's-', label='Frecuencia Mediana')
+plt.title('Evolución de la Frecuencia Media y Mediana (83 Contracciones)')
+plt.xlabel('Número de Contracción')
+plt.ylabel('Frecuencia [Hz]')
+plt.legend()
+plt.grid()
+plt.show()
+```
+
+<img width="631" height="345" alt="Graf_media_med" src="https://github.com/user-attachments/assets/632bf771-c275-4148-ac95-3a8a68ccdce0" />
 
 
 ### PARTE C
