@@ -182,6 +182,8 @@ plt.grid()
 plt.show()
 ```
 
+<img width="390" height="169" alt="Val_med_83" src="https://github.com/user-attachments/assets/6f1b8df5-0469-411e-8947-0016057a826e" />
+
 <img width="631" height="345" alt="Graf_media_med" src="https://github.com/user-attachments/assets/632bf771-c275-4148-ac95-3a8a68ccdce0" />
 
 
