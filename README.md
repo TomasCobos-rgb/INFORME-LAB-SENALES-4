@@ -70,6 +70,7 @@ plt.show()
 En esta fase se realizó la adquisición de la señal electromiográfica (EMG) proveniente de un voluntario sano, colocando los electrodos sobre un grupo muscular específico (como el bíceps o antebrazo). Durante el registro, el sujeto efectuó contracciones repetidas hasta la aparición de la fatiga muscular, permitiendo analizar cómo varían las componentes frecuenciales de la señal en condiciones reales
 
 ### RESULTADOS OBTENIDOS
+La siguente gráfica muestra la señal electromiográfica (EMG) original registrada en el laboratorio. En ella se observan las variaciones de amplitud en el tiempo, que reflejan la actividad eléctrica generada por las fibras musculares del corazón durante las contracciones. Esta señal cruda sirve como punto de partida para las etapas posteriores de procesamiento, como el filtrado y el análisis espectral, permitiendo identificar patrones asociados a la dinámica muscular.
 ```python
 # Señal original completa
 axs[0].plot(t, senal, color='gray', linewidth=0.8)
