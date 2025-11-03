@@ -313,6 +313,8 @@ plt.show()
 
 ### CÁLCULO DEL PICO ESPECTRAL Y GRÁFICA
 
+![DIAGRAMA DE FLUJO](https://github.com/TomasCobos-rgb/INFORME-LAB-SENALES-4/blob/main/IMAGENES/Beige%20Minimal%20Flowchart%20Infographic%20Graph%20(10).png?raw=true)
+
 ```python
  idx_max = np.argmax(Pxx)
     fpico = f[idx_max]
